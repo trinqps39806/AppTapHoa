@@ -15,7 +15,6 @@ import com.example.apptaphoa.views.HomeFrame;
 import com.example.apptaphoa.views.LoginFrame;
 
 public class LoginController {
-	//Xử lý đăng nhập
 	public static void login(JFrame frame, JTextField txtUsername, JPasswordField txtPassword) {
         String username = txtUsername.getText().trim();
         String password = String.valueOf(txtPassword.getPassword()).trim();

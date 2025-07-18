@@ -1,0 +1,58 @@
+{
+	"folders": {},
+	"connections": {
+		"microsoft-1981c122235-774c2720a71c7cc6": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "master",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "master",
+				"url": "jdbc:sqlserver://;serverName\u003dlocalhost;databaseName\u003dmaster",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-all-schemas@": "false",
+					"sslTrustServerCertificate": "false"
+				},
+				"auth-model": "sqlserver_database"
+			}
+		},
+		"mysql8-1981c5159c7-64345b603d23197a": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
+				"configurationType": "MANUAL",
+				"home": "/usr",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {"microsoft-1981c122235-774c2720a71c7cc6":{"AppTapHoa":{"dbo":{"@properties":{"erd.diagram.state":{"serialized":"\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202507181358\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"microsoft-1981c122235-774c2720a71c7cc6\"\u003e\u003centity id\u003d\"1\" name\u003d\"ChiTietHoaDon\" fq-name\u003d\"AppTapHoa.dbo.ChiTietHoaDon\" order\u003d\"0\" font\u003d\"Segoe UI:9:0\" x\u003d\"251\" y\u003d\"80\"\u003e\u003cpath name\u003d\"dbo\"/\u003e\u003cpath name\u003d\"AppTapHoa\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"2\" name\u003d\"ChiTietPhieuNhap\" fq-name\u003d\"AppTapHoa.dbo.ChiTietPhieuNhap\" order\u003d\"1\" border-width\u003d\"3\" font\u003d\"Segoe UI:9:0\" x\u003d\"79\" y\u003d\"395\"\u003e\u003cpath name\u003d\"dbo\"/\u003e\u003cpath name\u003d\"AppTapHoa\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"3\" name\u003d\"HoaDon\" fq-name\u003d\"AppTapHoa.dbo.HoaDon\" order\u003d\"2\" font\u003d\"Segoe UI:9:0\" x\u003d\"469\" y\u003d\"102\"\u003e\u003cpath name\u003d\"dbo\"/\u003e\u003cpath name\u003d\"AppTapHoa\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"4\" name\u003d\"NhaCungCap\" fq-name\u003d\"AppTapHoa.dbo.NhaCungCap\" order\u003d\"3\" font\u003d\"Segoe UI:9:0\" x\u003d\"751\" y\u003d\"399\"\u003e\u003cpath name\u003d\"dbo\"/\u003e\u003cpath name\u003d\"AppTapHoa\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"5\" name\u003d\"NhanVien\" fq-name\u003d\"AppTapHoa.dbo.NhanVien\" order\u003d\"4\" font\u003d\"Segoe UI:9:0\" x\u003d\"708\" y\u003d\"105\"\u003e\u003cpath name\u003d\"dbo\"/\u003e\u003cpath name\u003d\"AppTapHoa\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"6\" name\u003d\"PhieuNhapHang\" fq-name\u003d\"AppTapHoa.dbo.PhieuNhapHang\" order\u003d\"5\" font\u003d\"Segoe UI:9:0\" x\u003d\"494\" y\u003d\"392\"\u003e\u003cpath name\u003d\"dbo\"/\u003e\u003cpath name\u003d\"AppTapHoa\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"7\" name\u003d\"SanPham\" fq-name\u003d\"AppTapHoa.dbo.SanPham\" order\u003d\"6\" font\u003d\"Segoe UI:9:0\" x\u003d\"271\" y\u003d\"276\"\u003e\u003cpath name\u003d\"dbo\"/\u003e\u003cpath name\u003d\"AppTapHoa\"/\u003e\u003c/entity\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations\u003e\u003crelation name\u003d\"FK__ChiTietHoa__MaHD__6D0D32F4\" fq-name\u003d\"dbo.ChiTietHoaDon.FK__ChiTietHoa__MaHD__6D0D32F4\" type\u003d\"fk\" pk-ref\u003d\"3\" fk-ref\u003d\"1\"/\u003e\u003crelation name\u003d\"FK__PhieuNhap__MaNCC__628FA481\" fq-name\u003d\"dbo.PhieuNhapHang.FK__PhieuNhap__MaNCC__628FA481\" type\u003d\"fk\" pk-ref\u003d\"4\" fk-ref\u003d\"6\"/\u003e\u003crelation name\u003d\"FK__HoaDon__MaNV__6A30C649\" fq-name\u003d\"dbo.HoaDon.FK__HoaDon__MaNV__6A30C649\" type\u003d\"fk\" pk-ref\u003d\"5\" fk-ref\u003d\"3\"/\u003e\u003crelation name\u003d\"FK__PhieuNhapH__MaNV__6383C8BA\" fq-name\u003d\"dbo.PhieuNhapHang.FK__PhieuNhapH__MaNV__6383C8BA\" type\u003d\"fk\" pk-ref\u003d\"5\" fk-ref\u003d\"6\"/\u003e\u003crelation name\u003d\"FK__ChiTietPhi__MaPN__66603565\" fq-name\u003d\"dbo.ChiTietPhieuNhap.FK__ChiTietPhi__MaPN__66603565\" type\u003d\"fk\" pk-ref\u003d\"6\" fk-ref\u003d\"2\"/\u003e\u003crelation name\u003d\"FK__ChiTietHo__MaSan__6E01572D\" fq-name\u003d\"dbo.ChiTietHoaDon.FK__ChiTietHo__MaSan__6E01572D\" type\u003d\"fk\" pk-ref\u003d\"7\" fk-ref\u003d\"1\"/\u003e\u003crelation name\u003d\"FK__ChiTietPh__MaSan__6754599E\" fq-name\u003d\"dbo.ChiTietPhieuNhap.FK__ChiTietPh__MaSan__6754599E\" type\u003d\"fk\" pk-ref\u003d\"7\" fk-ref\u003d\"2\"/\u003e\u003c/relations\u003e\u003c/diagram\u003e"}}}}}},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}

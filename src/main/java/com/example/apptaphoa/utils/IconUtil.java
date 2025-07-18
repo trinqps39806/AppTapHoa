@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class IconUtil {
 	public static ImageIcon getIcon(String path) {
-        URL url = IconUtil.class.getResource("/images/" + path);
+        URL url = IconUtil.class.getResource("/Images/" + path);
         if (url != null) {
             return new ImageIcon(url);
         }

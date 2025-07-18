@@ -21,7 +21,9 @@ public class HomeController {
 	}
 
 	// Set tên người dùng lên label, và kiểm tra vai trò để enable/disable nút
-	public void phanQuyenUser(JLabel lblHoTen, JButton btnSanPham, JButton btnNhaCungCap, JButton btnHoaDon, JButton btnNhanVien, JButton btnDoanhThu) {
+	public void phanQuyenUser(
+	JLabel lblHoTen, JButton btnBanHang, JButton btnNhapHang, JButton btnLichSu, JButton btnSanPham, 
+	JButton btnNhaCungCap, JButton btnHoaDon, JButton btnNhanVien, JButton btnDoanhThu, JButton btnThanhToan) {
 		nv = AuthUtil.getUser();
 		if (nv != null) {
 			lblHoTen.setText(nv.getHoTen());
@@ -32,6 +34,10 @@ public class HomeController {
 				btnHoaDon.setVisible(true);
 				btnNhanVien.setVisible(true);
 				btnDoanhThu.setVisible(true);
+				btnBanHang.setVisible(true);
+				btnNhapHang.setVisible(true);
+				btnLichSu.setVisible(true);
+				btnThanhToan.setVisible(true);
 			} else {
 				// Nhân viên: ẩn các nút này
 				btnSanPham.setVisible(false);
@@ -39,6 +45,10 @@ public class HomeController {
 				btnHoaDon.setVisible(false);
 				btnNhanVien.setVisible(false);
 				btnDoanhThu.setVisible(false);
+				btnBanHang.setVisible(true);
+				btnNhapHang.setVisible(true);
+				btnLichSu.setVisible(true);
+				btnThanhToan.setVisible(true);
 			}
 		} else {
 			lblHoTen.setText("Chưa đăng nhập");
@@ -47,6 +57,10 @@ public class HomeController {
 			btnHoaDon.setVisible(false);
 			btnNhanVien.setVisible(false);
 			btnDoanhThu.setVisible(false);
+			btnBanHang.setVisible(false);
+			btnNhapHang.setVisible(false);
+			btnLichSu.setVisible(false);
+			btnThanhToan.setVisible(false);
 		}
 	}
 	
@@ -62,6 +76,18 @@ public class HomeController {
             }
         }
         lblTongSanPham.setText(String.valueOf(tong));
+    }
+    public void capNhatTongTien(DefaultTableModel cartModel, JLabel lblTongTien) {
+        int tong = 0;
+        for (int i = 0; i < cartModel.getRowCount(); i++) {
+            try {
+                int sl = Integer.parseInt(cartModel.getValueAt(i, 2).toString());
+                tong += sl;
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+        lblTongTien.setText(String.valueOf(tong));
     }
 
 }

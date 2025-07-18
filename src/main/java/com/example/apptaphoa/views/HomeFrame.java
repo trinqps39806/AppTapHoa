@@ -11,11 +11,11 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class HomeFrame extends JFrame {
-    private JButton btnLichSu;
-    private JButton btnNhapHang;
+    private JButton btnLichSu, btnNhapHang, btnThanhToan, btnBanHang;
     private JButton btnSanPham, btnNhaCungCap,btnHoaDon, btnNhanVien, btnDoanhThu;
     private JLabel lblHoTen, lblDoanhThu, lblSoDon, lblSanPhamTon, lblTongTien, lblTongSanPham;
     JComboBox cboThanhToan;
+    
     HomeController homeController = new HomeController();
 
     private JPanel statBox1;
@@ -172,7 +172,7 @@ public class HomeFrame extends JFrame {
         lblHoTen.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         lblHoTen.setForeground(new Color(37, 99, 235));
 
-        JButton btnBanHang = new JButton("Bán hàng");
+        btnBanHang = new JButton("Bán hàng");
         btnBanHang.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -340,7 +340,7 @@ public class HomeFrame extends JFrame {
         lblTongSanPham1.setForeground(new Color(37, 99, 235));
         lblTongSanPham1.setBounds(10, 501, 175, 38);
 
-        JButton btnThanhToan = new JButton("Thanh toán");
+        btnThanhToan = new JButton("Thanh toán");
         btnThanhToan.setFont(new Font("Segoe UI", Font.BOLD, 17));
         btnThanhToan.setBackground(new Color(34, 197, 94));
         btnThanhToan.setForeground(Color.white);
@@ -397,7 +397,7 @@ public class HomeFrame extends JFrame {
         btnXoa.setBounds(868, 65, 41, 24);
         sellPanel.add(btnXoa);
         
-     // Khởi tạo JComboBox với item kiểu hiện đại
+     // Khởi tạo JComboBox
         cboThanhToan = new JComboBox(new String[] {"Tiền mặt", "Chuyển khoản"});
         cboThanhToan.setFont(new Font("Segoe UI", Font.BOLD, 15));
         cboThanhToan.setForeground(new Color(37, 99, 235));
@@ -420,6 +420,7 @@ public class HomeFrame extends JFrame {
                 if (row >= 0) {
                     cartModel.removeRow(row);
                     homeController.capNhatTongSanPham(cartModel, lblTongSanPham);
+                    homeController.capNhatTongTien(cartModel, lblTongTien);
                 } else {
                     JOptionPane.showMessageDialog(HomeFrame.this, "Vui lòng chọn sản phẩm cần xóa!", "Thông báo", JOptionPane.WARNING_MESSAGE);
                 }
@@ -431,11 +432,15 @@ public class HomeFrame extends JFrame {
         //Set tên user và ẩn nút theo quyền
         homeController.phanQuyenUser(
                 lblHoTen,
+                btnBanHang,
+                btnNhapHang,
+                btnLichSu,
                 btnSanPham,
                 btnNhaCungCap,
                 btnHoaDon,
                 btnNhanVien,
-                btnDoanhThu
+                btnDoanhThu,
+                btnThanhToan
         );
         
     }
