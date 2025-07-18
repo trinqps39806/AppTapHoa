@@ -1,0 +1,18 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.example.apptaphoa;
+
+import com.example.apptaphoa.views.WelcomeFrame;
+
+/**
+ *
+ * @author qtriz
+ */
+public class Main {
+    public static void main(String[] args) {
+        WelcomeFrame welcomeFrame = new WelcomeFrame();
+        welcomeFrame.setVisible(true);
+    }
+}
