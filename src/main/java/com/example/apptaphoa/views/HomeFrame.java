@@ -11,8 +11,8 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class HomeFrame extends JFrame {
-    private JButton btnLichSu, btnNhapHang, btnThanhToan, btnBanHang;
-    private JButton btnSanPham, btnNhaCungCap,btnHoaDon, btnNhanVien, btnDoanhThu;
+    private JButton btnLichSu, btnNhapHang, btnThanhToan, btnBanHang, 
+    btnSanPham, btnNhaCungCap,btnHoaDon, btnNhanVien, btnDoanhThu, btnDuNo ;
     private JLabel lblHoTen, lblDoanhThu, lblSoDon, lblSanPhamTon, lblTongTien, lblTongSanPham;
     JComboBox cboThanhToan;
     
@@ -133,6 +133,17 @@ public class HomeFrame extends JFrame {
         btnNhanVien.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btnNhanVien.setHorizontalAlignment(SwingConstants.LEFT);
         btnNhanVien.setBounds(35, 436, 140, 38);
+        
+        btnDuNo = new JButton("Dư nợ hàng");
+        btnDuNo.setHorizontalAlignment(SwingConstants.LEFT);
+        btnDuNo.setForeground(Color.WHITE);
+        btnDuNo.setFont(new Font("Dialog", Font.PLAIN, 15));
+        btnDuNo.setFocusPainted(false);
+        btnDuNo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnDuNo.setBorder(BorderFactory.createEmptyBorder(7, 16, 7, 16));
+        btnDuNo.setBackground(new Color(51, 65, 85));
+        btnDuNo.setBounds(35, 679, 140, 38);
+        sideBar.add(btnDuNo);
 
         sideBar.add(lblApp);
         sideBar.add(btnLichSu);
@@ -440,7 +451,8 @@ public class HomeFrame extends JFrame {
                 btnHoaDon,
                 btnNhanVien,
                 btnDoanhThu,
-                btnThanhToan
+                btnThanhToan,
+                btnDuNo
         );
         
     }
