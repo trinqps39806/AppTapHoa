@@ -5,6 +5,9 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class JDBCUtil {
 	public static Connection getConnection() {
         Connection c = null;
@@ -29,6 +32,19 @@ public class JDBCUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    @Test
+    void testGetConnection() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtil.getConnection();
+            assertNotNull(conn, "Kết nối trả về là null");
+            assertFalse(conn.isClosed(), "Kết nối đã bị đóng");
+        } catch (Exception e) {
+            fail("Không thể kết nối tới SQL Server: " + e.getMessage());
+        } finally {
+            JDBCUtil.closeConnection(conn);
         }
     }
     public static void main(String[] args) {
