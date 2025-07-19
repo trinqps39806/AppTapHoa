@@ -79,7 +79,7 @@ public class LoginFrame extends JFrame {
         txtPassword = new JPasswordField();
         txtPassword.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		loginController.login(null, txtUsername, txtPassword);
+        		loginController.login(LoginFrame.this, txtUsername, txtPassword);
         	}
         });
         txtPassword.setFont(new Font("Segoe UI", Font.PLAIN, 20));
@@ -95,7 +95,7 @@ public class LoginFrame extends JFrame {
         btnLogin = new JButton("Đăng nhập");
         btnLogin.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		loginController.login(null, txtUsername, txtPassword);
+        		loginController.login(LoginFrame.this, txtUsername, txtPassword);
         	}
         });
         btnLogin.setFont(new Font("Segoe UI", Font.BOLD, 20));
