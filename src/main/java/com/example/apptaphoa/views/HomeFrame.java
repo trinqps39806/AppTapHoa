@@ -408,7 +408,6 @@ public class HomeFrame extends JFrame {
         btnXoa.setBounds(868, 65, 41, 24);
         sellPanel.add(btnXoa);
         
-     // Khởi tạo JComboBox
         cboThanhToan = new JComboBox(new String[] {"Tiền mặt", "Chuyển khoản"});
         cboThanhToan.setFont(new Font("Segoe UI", Font.BOLD, 15));
         cboThanhToan.setForeground(new Color(37, 99, 235));
@@ -422,7 +421,6 @@ public class HomeFrame extends JFrame {
         ));
 
         sellPanel.add(cboThanhToan);
-
 
         //Sửa action cho nút Xóa
         btnXoa.addActionListener(new ActionListener() {

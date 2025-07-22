@@ -8,6 +8,7 @@ public class AuthUtil {
     // Đăng nhập: gán user vào AuthUtil
     public static void login(NhanVien nv) {
         currentUser = nv;
+        System.out.println("Đăng nhập thành công: " + nv.getHoTen());
     }
 
     // Đăng xuất: xóa user

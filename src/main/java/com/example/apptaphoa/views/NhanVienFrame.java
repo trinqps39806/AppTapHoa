@@ -5,6 +5,8 @@ import javax.swing.table.DefaultTableModel;
 
 import com.example.apptaphoa.controller.NhanVienController;
 import com.example.apptaphoa.model.NhanVien;
+import com.example.apptaphoa.utils.AuthUtil;
+
 import java.util.List;
 
 import java.awt.*;
@@ -217,6 +219,10 @@ public class NhanVienFrame extends JFrame {
         btnXoa.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String maNV = txtMaNV.getText().trim();
+        		if(maNV.equals(AuthUtil.getUser().getMaNV())) {
+                    JOptionPane.showMessageDialog(NhanVienFrame.this, "Bạn không thể xóa tài khoản đang đăng nhập!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 if (maNV.isEmpty()) {
                     JOptionPane.showMessageDialog(NhanVienFrame.this, "Vui lòng chọn nhân viên để xóa!", "Thông báo", JOptionPane.WARNING_MESSAGE);
                     return;
