@@ -122,7 +122,7 @@ public class HomeFrame extends JFrame {
         btnNhanVien = new JButton("Nhân viên");
         btnNhanVien.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+            	new NhanVienFrame().setVisible(true);	
             }
         });
         btnNhanVien.setFont(new Font("Segoe UI", Font.PLAIN, 15));
@@ -337,8 +337,8 @@ public class HomeFrame extends JFrame {
         //Bảng giỏ hàng
         String[] cartCols = {"Mã SP", "Tên SP", "Đơn giá", "Số lượng", "Thành tiền"};
         cartModel = new DefaultTableModel(cartCols, 0);
-        cartModel.addRow(new Object[]{"SP01", "Sữa tươi", "28.000", "2", "56.000"});
-        cartModel.addRow(new Object[]{"SP12", "Bánh mì", "15.000", "3", "45.000"});
+        cartModel.addRow(new Object[]{"SP01", "Sữa tươi", "28000", "2", "56000"});
+        cartModel.addRow(new Object[]{"SP12", "Bánh mì", "15000", "3", "45000"});
         tblCart = new JTable(cartModel);
         tblCart.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         tblCart.setRowHeight(30);
@@ -370,7 +370,7 @@ public class HomeFrame extends JFrame {
 
         contentPanel.add(sellPanel);
 
-        lblTongTien = new JLabel("101.000");
+        lblTongTien = new JLabel("101000");
         lblTongTien.setForeground(new Color(37, 99, 235));
         lblTongTien.setFont(new Font("Dialog", Font.BOLD, 20));
         lblTongTien.setBounds(132, 545, 140, 38);

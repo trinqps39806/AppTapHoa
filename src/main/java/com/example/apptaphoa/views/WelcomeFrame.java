@@ -11,14 +11,12 @@ import com.example.apptaphoa.controller.WelcomeController;
 
 import java.awt.BorderLayout;
 import javax.swing.JProgressBar;
-import java.awt.Label;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 
 public class WelcomeFrame extends JFrame {
@@ -91,7 +89,7 @@ public class WelcomeFrame extends JFrame {
 		panel.add(lblTpHan);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/Images/background.png")));
+		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/Images/bg.png")));
 		lblNewLabel.setBounds(0, 0, 1340, 890);
 		panel.add(lblNewLabel);
 		setLocationRelativeTo(null);

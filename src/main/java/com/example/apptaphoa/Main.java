@@ -12,7 +12,6 @@ import com.example.apptaphoa.views.WelcomeFrame;
  */
 public class Main {
     public static void main(String[] args) {
-        WelcomeFrame welcomeFrame = new WelcomeFrame();
-        welcomeFrame.setVisible(true);
+       new WelcomeFrame().setVisible(true);
     }
 }

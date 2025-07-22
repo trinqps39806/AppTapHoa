@@ -1,7 +1,7 @@
 package com.example.apptaphoa.model;
 
 public class NhanVien {
-	private int maNV;
+	private String maNV;
     private String hoTen;
     private String tenDangNhap;
     private String matKhau;
@@ -13,11 +13,11 @@ public class NhanVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getMaNV() {
+	public String getMaNV() {
 		return maNV;
 	}
 
-	public void setMaNV(int maNV) {
+	public void setMaNV(String maNV) {
 		this.maNV = maNV;
 	}
 

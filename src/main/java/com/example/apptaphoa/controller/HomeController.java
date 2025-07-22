@@ -27,7 +27,7 @@ public class HomeController {
 		nv = AuthUtil.getUser();
 		if (nv != null) {
 			lblHoTen.setText(nv.getHoTen());
-			if ("Admin".equalsIgnoreCase(nv.getVaiTro())) {
+			if ("Quản lý".equalsIgnoreCase(nv.getVaiTro())) {
 				// Quản lý: hiện tất cả các nút
 				btnSanPham.setVisible(true);
 				btnNhaCungCap.setVisible(true);
@@ -85,12 +85,12 @@ public class HomeController {
     	double tong = 0;
         for (int i = 0; i < cartModel.getRowCount(); i++) {
             try {
-                String str = cartModel.getValueAt(i, 4).toString().replace(".", "").replace(",", "");
+                String str = cartModel.getValueAt(i, 4).toString()/*.replace(".", "").replace(",", "")*/;
                 double thanhTien = Double.parseDouble(str);
                 tong += thanhTien;
             } catch (Exception ex) {}
         }
-        lblTongTien.setText(String.format("%,.0f", tong));
+        lblTongTien.setText(String.format("%.0f", tong));
     }
 
 }
