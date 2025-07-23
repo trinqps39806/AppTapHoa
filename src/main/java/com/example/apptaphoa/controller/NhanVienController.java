@@ -14,7 +14,6 @@ public class NhanVienController {
 
     // Thêm mới nhân viên
     public boolean addNhanVien(NhanVien nv) {
-        // Có thể kiểm tra trùng mã NV hoặc validate đầu vào ở đây nếu muốn
         return nhanVienDAO.insert(nv);
     }
 
