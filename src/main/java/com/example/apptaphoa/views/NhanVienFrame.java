@@ -23,7 +23,7 @@ public class NhanVienFrame extends JFrame {
 
     public NhanVienFrame() {
         setTitle("Quản lý nhân viên");
-        setSize(1000, 600);
+        setSize(1126, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -31,18 +31,18 @@ public class NhanVienFrame extends JFrame {
         JPanel header = new JPanel();
         header.setLayout(null);
         header.setBackground(new Color(30, 41, 59));
-        header.setBounds(0, 0, 1000, 68);
+        header.setBounds(0, 0, 1126, 68);
         JLabel lblTitle = new JLabel("QUẢN LÝ NHÂN VIÊN");
         lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 27));
         lblTitle.setForeground(new Color(37, 99, 235));
-        lblTitle.setBounds(30, 15, 420, 38);
+        lblTitle.setBounds(61, 18, 420, 38);
         header.add(lblTitle);
         getContentPane().add(header);
 
         // === TABLE DANH SÁCH NHÂN VIÊN ===
         JPanel panelTable = new JPanel(null);
         panelTable.setBackground(new Color(245, 249, 255));
-        panelTable.setBounds(20, 78, 950, 240);
+        panelTable.setBounds(20, 78, 1094, 356);
         panelTable.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(220, 225, 230), 1, true),
                 BorderFactory.createEmptyBorder(10, 12, 10, 12)
@@ -60,7 +60,7 @@ public class NhanVienFrame extends JFrame {
         tblNhanVien.setSelectionForeground(new Color(37, 99, 235));
         tblNhanVien.putClientProperty("FlatLaf.styleClass", "table striped");
         JScrollPane scrollPane = new JScrollPane(tblNhanVien);
-        scrollPane.setBounds(0, 0, 950, 240);
+        scrollPane.setBounds(0, 0, 1090, 356);
         panelTable.add(scrollPane);
         getContentPane().add(panelTable);
         tblNhanVien.addMouseListener(new MouseAdapter() {
@@ -82,12 +82,12 @@ public class NhanVienFrame extends JFrame {
 
         // === FORM PANEL ===
         JPanel formPanel = new JPanel(null);
-        formPanel.setBackground(Color.WHITE);
+        formPanel.setBackground(new Color(255, 255, 255));
         formPanel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(220, 225, 230), 1, true),
                 BorderFactory.createEmptyBorder(22, 28, 20, 28)
         ));
-        formPanel.setBounds(20, 335, 950, 180);
+        formPanel.setBounds(20, 446, 1094, 180);
 
         // Mã NV
         JLabel lblMaNV = new JLabel("Mã NV");
@@ -97,51 +97,51 @@ public class NhanVienFrame extends JFrame {
         formPanel.add(lblMaNV);
         txtMaNV = new JTextField();
         txtMaNV.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        txtMaNV.setBounds(18, 38, 110, 36);
+        txtMaNV.setBounds(18, 38, 121, 36);
         formPanel.add(txtMaNV);
 
         // Họ tên
         JLabel lblHoTen = new JLabel("Họ tên");
         lblHoTen.setFont(new Font("Segoe UI", Font.BOLD, 15));
         lblHoTen.setForeground(new Color(30, 64, 175));
-        lblHoTen.setBounds(152, 10, 80, 26);
+        lblHoTen.setBounds(172, 10, 80, 26);
         formPanel.add(lblHoTen);
         txtHoTen = new JTextField();
         txtHoTen.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        txtHoTen.setBounds(152, 38, 180, 36);
+        txtHoTen.setBounds(168, 38, 211, 36);
         formPanel.add(txtHoTen);
 
         // Tài khoản
         JLabel lblTenDN = new JLabel("Tài khoản");
         lblTenDN.setFont(new Font("Segoe UI", Font.BOLD, 15));
         lblTenDN.setForeground(new Color(30, 64, 175));
-        lblTenDN.setBounds(356, 10, 80, 26);
+        lblTenDN.setBounds(408, 10, 80, 26);
         formPanel.add(lblTenDN);
         txtTenDangNhap = new JTextField();
         txtTenDangNhap.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        txtTenDangNhap.setBounds(356, 38, 150, 36);
+        txtTenDangNhap.setBounds(408, 38, 150, 36);
         formPanel.add(txtTenDangNhap);
 
         // Mật khẩu
         JLabel lblMatKhau = new JLabel("Mật khẩu");
         lblMatKhau.setFont(new Font("Segoe UI", Font.BOLD, 15));
         lblMatKhau.setForeground(new Color(30, 64, 175));
-        lblMatKhau.setBounds(530, 10, 80, 26);
+        lblMatKhau.setBounds(591, 10, 80, 26);
         formPanel.add(lblMatKhau);
         txtMatKhau = new JTextField();
         txtMatKhau.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        txtMatKhau.setBounds(530, 38, 120, 36);
+        txtMatKhau.setBounds(593, 38, 144, 36);
         formPanel.add(txtMatKhau);
 
         // Giới tính
         JLabel lblGioiTinh = new JLabel("Giới tính");
         lblGioiTinh.setFont(new Font("Segoe UI", Font.BOLD, 15));
         lblGioiTinh.setForeground(new Color(30, 64, 175));
-        lblGioiTinh.setBounds(678, 10, 80, 26);
+        lblGioiTinh.setBounds(770, 10, 80, 26);
         formPanel.add(lblGioiTinh);
         cboGioiTinh = new JComboBox<>(new String[]{"Nam", "Nữ", "Khác"});
         cboGioiTinh.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        cboGioiTinh.setBounds(678, 38, 120, 36);
+        cboGioiTinh.setBounds(770, 37, 128, 36);
         cboGioiTinh.setBackground(Color.WHITE);
         formPanel.add(cboGioiTinh);
 
@@ -149,11 +149,11 @@ public class NhanVienFrame extends JFrame {
         JLabel lblEmail = new JLabel("Email");
         lblEmail.setFont(new Font("Segoe UI", Font.BOLD, 15));
         lblEmail.setForeground(new Color(30, 64, 175));
-        lblEmail.setBounds(818, 10, 80, 26);
+        lblEmail.setBounds(932, 10, 80, 26);
         formPanel.add(lblEmail);
         txtEmail = new JTextField();
         txtEmail.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        txtEmail.setBounds(818, 38, 110, 36);
+        txtEmail.setBounds(932, 38, 150, 36);
         formPanel.add(txtEmail);
 
         // Vai trò
@@ -187,7 +187,7 @@ public class NhanVienFrame extends JFrame {
         	}
         });
         btnThem.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        btnThem.setBounds(370, 120, 110, 36);
+        btnThem.setBounds(497, 120, 110, 36);
         btnThem.setBackground(new Color(34, 197, 94));
         btnThem.setForeground(Color.WHITE);
         formPanel.add(btnThem);
@@ -210,7 +210,7 @@ public class NhanVienFrame extends JFrame {
         	}
         });
         btnSua.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        btnSua.setBounds(495, 120, 110, 36);
+        btnSua.setBounds(622, 120, 110, 36);
         btnSua.setBackground(new Color(37, 99, 235));
         btnSua.setForeground(Color.WHITE);
         formPanel.add(btnSua);
@@ -241,7 +241,7 @@ public class NhanVienFrame extends JFrame {
         	}
         });
         btnXoa.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        btnXoa.setBounds(620, 120, 110, 36);
+        btnXoa.setBounds(747, 120, 110, 36);
         btnXoa.setBackground(new Color(224, 27, 36));
         btnXoa.setForeground(Color.WHITE);
         formPanel.add(btnXoa);
@@ -253,8 +253,8 @@ public class NhanVienFrame extends JFrame {
         	}
         });
         btnMoi.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        btnMoi.setBounds(745, 120, 110, 36);
-        btnMoi.setBackground(new Color(120, 120, 120));
+        btnMoi.setBounds(872, 120, 110, 36);
+        btnMoi.setBackground(new Color(229, 165, 10));
         btnMoi.setForeground(Color.WHITE);
         formPanel.add(btnMoi);
 

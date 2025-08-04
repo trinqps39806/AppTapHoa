@@ -2,7 +2,6 @@ package com.example.apptaphoa.views;
 
 import com.example.apptaphoa.controller.LoginController;
 import com.example.apptaphoa.model.NhanVien;
-import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -117,7 +116,7 @@ public class LoginFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        try { UIManager.setLookAndFeel(new FlatLightLaf()); } catch(Exception ignored){}
+        try { } catch(Exception ignored){}
         SwingUtilities.invokeLater(() -> new LoginFrame().setVisible(true));
     }
 }

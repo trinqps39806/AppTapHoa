@@ -1,6 +1,12 @@
 package com.example.apptaphoa.views;
 
 import com.example.apptaphoa.controller.HomeController;
+import com.example.apptaphoa.dao.ChiTietHoaDonDAO;
+import com.example.apptaphoa.dao.HoaDonDAO;
+import com.example.apptaphoa.dao.SanPhamDAO;
+import com.example.apptaphoa.model.ChiTietHoaDon;
+import com.example.apptaphoa.model.HoaDon;
+import com.example.apptaphoa.utils.AuthUtil;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +21,9 @@ public class HomeFrame extends JFrame {
     btnSanPham, btnNhaCungCap,btnHoaDon, btnNhanVien, btnDoanhThu, btnDuNo ;
     private JLabel lblHoTen, lblDoanhThu, lblSoDon, lblSanPhamTon, lblTongTien, lblTongSanPham;
     JComboBox cboThanhToan;
-    
+    private HoaDonDAO hoaDonDAO = new HoaDonDAO();
+    private ChiTietHoaDonDAO chiTietHoaDonDAO = new ChiTietHoaDonDAO();
+
     HomeController homeController = new HomeController();
 
     private JPanel statBox1;
@@ -352,6 +360,12 @@ public class HomeFrame extends JFrame {
         lblTongSanPham1.setBounds(10, 501, 175, 38);
 
         btnThanhToan = new JButton("Thanh toán");
+        btnThanhToan.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                xuLyThanhToan();
+            }
+        });
+
         btnThanhToan.setFont(new Font("Segoe UI", Font.BOLD, 17));
         btnThanhToan.setBackground(new Color(34, 197, 94));
         btnThanhToan.setForeground(Color.white);
@@ -419,7 +433,6 @@ public class HomeFrame extends JFrame {
             BorderFactory.createLineBorder(new Color(220, 225, 230), 1, true),
             BorderFactory.createEmptyBorder(4, 14, 4, 14)
         ));
-
         sellPanel.add(cboThanhToan);
 
         //Sửa action cho nút Xóa
@@ -454,6 +467,52 @@ public class HomeFrame extends JFrame {
         );
         
     }
+    
+    private void xuLyThanhToan() {
+        try {
+            double tongTien = 0;
+            for (int i = 0; i < cartModel.getRowCount(); i++) {
+                tongTien += Double.parseDouble(cartModel.getValueAt(i, 4).toString());
+            }
+
+            // 2. Lấy mã nhân viên đăng nhập
+            String maNV = com.example.apptaphoa.utils.AuthUtil.getUser().getMaNV();
+            String hinhThucTT = cboThanhToan.getSelectedItem().toString();
+
+            // 3. Tạo hóa đơn
+            HoaDon hd = new HoaDon();
+            hd.setThoiGian(new java.sql.Timestamp(System.currentTimeMillis()));
+            hd.setTongTien(tongTien);
+            hd.setHinhThucTT(hinhThucTT);
+            hd.setMaNV(Integer.parseInt(maNV));
+
+            int maHD = hoaDonDAO.insertAndReturnId(hd);
+            if (maHD == -1) {
+                JOptionPane.showMessageDialog(this, "Không thể tạo hóa đơn!");
+                return;
+            }
+
+            // 4. Thêm từng chi tiết hóa đơn
+            for (int i = 0; i < cartModel.getRowCount(); i++) {
+                ChiTietHoaDon cthd = new ChiTietHoaDon();
+                cthd.setMaHD(maHD);
+                cthd.setMaSanPham(Integer.parseInt(cartModel.getValueAt(i, 0).toString()));
+                cthd.setSoLuong(Integer.parseInt(cartModel.getValueAt(i, 3).toString()));
+                cthd.setDonGia(Double.parseDouble(cartModel.getValueAt(i, 2).toString()));
+                cthd.setThanhTien(Double.parseDouble(cartModel.getValueAt(i, 4).toString()));
+                chiTietHoaDonDAO.insert(cthd);
+            }
+
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công! Hóa đơn #" + maHD);
+            cartModel.setRowCount(0);
+            lblTongSanPham.setText("0");
+            lblTongTien.setText("0");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lỗi thanh toán: " + ex.getMessage());
+        }
+    }
+
 
     public static void main(String[] args) {
         try { UIManager.setLookAndFeel(new FlatLightLaf()); } catch(Exception ignored) {}

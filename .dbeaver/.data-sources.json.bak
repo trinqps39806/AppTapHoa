@@ -4,7 +4,7 @@
 		"microsoft-1981c122235-774c2720a71c7cc6": {
 			"provider": "sqlserver",
 			"driver": "microsoft",
-			"name": "master",
+			"name": "mssql-server",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
@@ -24,7 +24,7 @@
 		"mysql8-1981c5159c7-64345b603d23197a": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "localhost",
+			"name": "mysql",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",

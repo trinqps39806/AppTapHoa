@@ -56,6 +56,7 @@ public class WelcomeFrame extends JFrame {
 		panel.setLayout(null);
 		
 		JProgressBar progressBarLoading = new JProgressBar();
+		progressBarLoading.setValue(16);
 		progressBarLoading.setBounds(235, 704, 853, 26);
 		panel.add(progressBarLoading);
 		progressBarLoading.setStringPainted(true);
