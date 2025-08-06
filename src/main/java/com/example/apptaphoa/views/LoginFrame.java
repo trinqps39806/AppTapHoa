@@ -115,7 +115,6 @@ public class LoginFrame extends JFrame {
 		btnLogin.setBorder(BorderFactory.createLineBorder(new Color(37, 99, 235), 1, true));
 		btnLogin.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-<<<<<<< HEAD
     public static void main(String[] args) {
         try { } catch(Exception ignored){}
         SwingUtilities.invokeLater(() -> new LoginFrame().setVisible(true));
