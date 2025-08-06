@@ -1,34 +1,21 @@
-package com.example.apptaphoa.model;
+package com.example.apptaphoa.dao;
 
-import java.util.Date;
+import com.example.apptaphoa.model.ChiTietHoaDon;
+import com.example.apptaphoa.utils.JDBCUtil;
 
-public class HoaDon {
-    private int maHD;
-    private Date thoiGian;
-    private double tongTien;
-    private String hinhThucTT;
-    private String maNV;
+import java.sql.*;
 
-    public HoaDon() {}
-
-    public HoaDon(double tongTien, String hinhThucTT, String maNV) {
-        this.tongTien = tongTien;
-        this.hinhThucTT = hinhThucTT;
-        this.maNV = maNV;
+public class ChiTietHoaDonDAO {
+    public void insert(ChiTietHoaDon cthd) {
+        String sql = "INSERT INTO ChiTietHoaDon (MaHD, MaSanPham, SoLuong, DonGia, ThanhTien) VALUES (?, ?, ?, ?, ?)";
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, cthd.getMaHD());
+            ps.setInt(2, cthd.getMaSanPham());
+            ps.setInt(3, cthd.getSoLuong());
+            ps.setDouble(4, cthd.getDonGia());
+            ps.setDouble(5, cthd.getThanhTien());
+            ps.executeUpdate();
+        } catch (Exception e) { e.printStackTrace(); }
     }
-
-    public int getMaHD() { return maHD; }
-    public void setMaHD(int maHD) { this.maHD = maHD; }
-
-    public Date getThoiGian() { return thoiGian; }
-    public void setThoiGian(Date thoiGian) { this.thoiGian = thoiGian; }
-
-    public double getTongTien() { return tongTien; }
-    public void setTongTien(double tongTien) { this.tongTien = tongTien; }
-
-    public String getHinhThucTT() { return hinhThucTT; }
-    public void setHinhThucTT(String hinhThucTT) { this.hinhThucTT = hinhThucTT; }
-
-    public String getMaNV() { return maNV; }
-    public void setMaNV(String maNV) { this.maNV = maNV; }
 }
