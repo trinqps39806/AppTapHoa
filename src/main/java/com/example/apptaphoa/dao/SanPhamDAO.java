@@ -1,5 +1,6 @@
 package com.example.apptaphoa.dao;
 
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -15,5 +16,99 @@ public class SanPhamDAO {
             return ps.executeUpdate() > 0;
         } catch (Exception e) { e.printStackTrace(); }
         return false;
+=======
+import com.example.apptaphoa.model.SanPham;
+import com.example.apptaphoa.utils.JDBCUtil;
+
+import java.sql.*;
+import java.util.*;
+
+public class SanPhamDAO {
+    public List<SanPham> getAllSanPham() {
+        List<SanPham> list = new ArrayList<>();
+        try (Connection con = JDBCUtil.getConnection();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery("SELECT * FROM SanPham")) {
+            while (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMaSanPham(rs.getInt("MaSanPham"));
+                sp.setTenSanPham(rs.getString("TenSanPham"));
+                sp.setDonGia(rs.getDouble("DonGia"));
+                sp.setSoLuongTonKho(rs.getInt("SoLuongTonKho"));
+                sp.setLoaiSanPham(rs.getString("LoaiSanPham"));
+                list.add(sp);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return list;
+    }
+
+    public SanPham getSanPhamById(int maSP) {
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement("SELECT * FROM SanPham WHERE MaSanPham = ?")) {
+            ps.setInt(1, maSP);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMaSanPham(maSP);
+                sp.setTenSanPham(rs.getString("TenSanPham"));
+                sp.setDonGia(rs.getDouble("DonGia"));
+                sp.setSoLuongTonKho(rs.getInt("SoLuongTonKho"));
+                sp.setLoaiSanPham(rs.getString("LoaiSanPham"));
+                return sp;
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return null;
+    }
+
+    public List<String> getAllLoaiSanPham() {
+        List<String> list = new ArrayList<>();
+        try (Connection con = JDBCUtil.getConnection();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery("SELECT DISTINCT LoaiSanPham FROM SanPham")) {
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return list;
+    }
+
+    public List<SanPham> getSanPhamByLoai(String loai) {
+        List<SanPham> list = new ArrayList<>();
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement("SELECT * FROM SanPham WHERE LoaiSanPham = ?")) {
+            ps.setString(1, loai);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMaSanPham(rs.getInt("MaSanPham"));
+                sp.setTenSanPham(rs.getString("TenSanPham"));
+                sp.setDonGia(rs.getDouble("DonGia"));
+                sp.setSoLuongTonKho(rs.getInt("SoLuongTonKho"));
+                sp.setLoaiSanPham(rs.getString("LoaiSanPham"));
+                list.add(sp);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return list;
+    }
+
+    public int getSoLuongTonKhoByMaSP(int maSP) {
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement("SELECT SoLuongTonKho FROM SanPham WHERE MaSanPham = ?")) {
+            ps.setInt(1, maSP);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getInt(1);
+        } catch (Exception e) { e.printStackTrace(); }
+        return 0;
+    }
+
+    public void giamSoLuongTonKho(int maSP, int soLuongBan) {
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement(
+                "UPDATE SanPham SET SoLuongTonKho = SoLuongTonKho - ? WHERE MaSanPham = ?")) {
+            ps.setInt(1, soLuongBan);
+            ps.setInt(2, maSP);
+            ps.executeUpdate();
+        } catch (Exception e) { e.printStackTrace(); }
+>>>>>>> 7138b57 (E)
     }
 }

@@ -7,8 +7,15 @@ public class ChiTietHoaDon {
     private double donGia;
     private double thanhTien;
     
-    public ChiTietHoaDon() {
-		// TODO Auto-generated constructor stub
+    public ChiTietHoaDon(int maHD, int maSanPham, int soLuong, double donGia, double thanhTien) {
+        this.maHD = maHD;
+        this.maSanPham = maSanPham;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.thanhTien = thanhTien;
+    }
+	public ChiTietHoaDon() {
+		// Constructor rỗng
 	}
 
 	public int getMaHD() {
